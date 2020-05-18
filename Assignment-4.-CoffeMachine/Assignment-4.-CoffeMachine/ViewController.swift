@@ -16,14 +16,20 @@ class ViewController: UIViewController {
     
     // status Coffee Lables
     
-    @IBOutlet weak var statusIceTankLable: UILabel!
-    @IBOutlet weak var statusChokoTankLable: UILabel!
-    @IBOutlet weak var statusIceCreamTankLable: UILabel!
-    @IBOutlet weak var statusLiquorTankLable: UILabel!
-    @IBOutlet weak var statusMilkTankLable: UILabel!
-    @IBOutlet weak var statusGrainsTankLable: UILabel!
-    @IBOutlet weak var statusWaterTankLable: UILabel!
-    @IBOutlet weak var statusTrashTankLable: UILabel!
+    @IBOutlet weak var statusIceCreamLable: UILabel!
+    @IBOutlet weak var statusMilkLable: UILabel!
+    @IBOutlet weak var statusCupsLable: UILabel!
+    @IBOutlet weak var statusGraceLable: UILabel!
+    @IBOutlet weak var statusWaterLable: UILabel!
+    @IBOutlet weak var statusTrashLable: UILabel!
+    
+    
+    @IBOutlet weak var statusCashboxLable: UILabel!
+    @IBOutlet weak var statusCountsCupsLable: UILabel!
+    
+    // Buttons fill up!
+    
+    
     
     let LAVAZZA = CM(name: "LAVAZZA")
     
@@ -45,58 +51,89 @@ class ViewController: UIViewController {
     }
     
     @IBAction func putOneDollarButton(_ sender: Any) {
-        LAVAZZA.statusCash += 1.0
+        LAVAZZA.statusCash += 1
         updateBank()
     }
     
     @IBAction func putTwoDollarsButton(_ sender: Any) {
-        LAVAZZA.statusCash += 2.0
+        LAVAZZA.statusCash += 2
         updateBank()
     }
     
-    func updateBank() { bankLable.text = "Your bank is: \(LAVAZZA.statusCash) dollars." }
+    
     
     // - Coffee
     
     @IBAction func espressoButton(_ sender: Any) {
         mainSatusLable.text = LAVAZZA.makeEspresso()
-        updateStatusTank()
+        statusTanks()
         updateBank()
         
     }
     
     @IBAction func glaceButton(_ sender: Any) {
         mainSatusLable.text = LAVAZZA.makeGlace()
-        updateStatusTank()
+        statusTanks()
         updateBank()
     }
     
+    @IBAction func americanoButton(_ sender: Any) {
+        mainSatusLable.text = LAVAZZA.makeAmericano()
+        statusTanks()
+        updateBank()
+    }
+    
+ // Buttons fill up
     
     
-    @IBAction func serviceButton(_ sender: Any) {
-        LAVAZZA.statusLiquorTank = 100
-        LAVAZZA.statusIceCreamTank = 100
-        LAVAZZA.statusIceTank = 100
+    @IBAction func fillUpIceCreamButton(_ sender: Any) {
+        LAVAZZA.statusIceCreamTank += 150
+        mainSatusLable.text = "Ice Cream Tank fill up"
+        statusIceCreamLable.text = "IceCream: \(LAVAZZA.statusIceCreamTank)"
+    }
+    
+    @IBAction func fillUpMilkButton(_ sender: Any) {
+        LAVAZZA.statusMilkTank += 1000
+        mainSatusLable.text = "Milk Tank fill up"
+        statusMilkLable.text = "Milk:  \(LAVAZZA.statusMilkTank)"
+    }
+    
+    @IBAction func fillUpCupsButton(_ sender: Any) {
+        LAVAZZA.statusCups += 10
+        mainSatusLable.text = "Cups added"
+        statusCupsLable.text = "Cups: \(LAVAZZA.statusCups)"
+    }
+    
+    @IBAction func fillUpGrainceButton(_ sender: Any) {
+        LAVAZZA.statusGrainsTank += 100
+        mainSatusLable.text = "Graince added"
+        statusGraceLable.text = "Grace:  \(LAVAZZA.statusGrainsTank)"
+    }
+    
+    @IBAction func fillUpWaterButton(_ sender: Any) {
+        LAVAZZA.statusWaterTank += 1000
+        mainSatusLable.text = "Water Tank fill up"
+        statusWaterLable.text = "Water: \(LAVAZZA.statusWaterTank)"
+    }
+    
+    @IBAction func clearTrashButton(_ sender: Any) {
         LAVAZZA.statusTrashTank = 0
-        LAVAZZA.statusGrainsTank = 1000
-        LAVAZZA.statusWaterTank = 1000
-        LAVAZZA.statusMilkTank = 1000
-        LAVAZZA.statusChokoTank = 100
-        updateStatusTank()
+        mainSatusLable.text = "Trash clean UP"
+        statusTrashLable.text = "Tank with trash is a clean"
     }
     
-    func updateStatusTank() {
+    
+    func statusTanks() {
         
-        statusIceTankLable.text = "Ice: \(LAVAZZA.statusIceTank)"
-        statusChokoTankLable.text = "Chokolate: \(LAVAZZA.statusChokoTank)"
-        statusMilkTankLable.text = "Milk: \(LAVAZZA.statusMilkTank)"
-        statusTrashTankLable.text = "Trash: \(LAVAZZA.statusTrashTank)"
-        statusWaterTankLable.text = "Water: \(LAVAZZA.statusWaterTank)"
-        statusIceCreamTankLable.text = "IceCream: \(LAVAZZA.statusIceCreamTank)"
-        statusGrainsTankLable.text = "Grains: \(LAVAZZA.statusGrainsTank)"
-        statusLiquorTankLable.text = "Liauor: \(LAVAZZA.statusLiquorTank)"
+        statusIceCreamLable.text = "IceCream: \(LAVAZZA.statusIceCreamTank)"
+        statusGraceLable.text = "Grace: \(LAVAZZA.statusGrainsTank)"
+        statusMilkLable.text = "Milk: \(LAVAZZA.statusMilkTank)"
+        statusWaterLable.text = "Water: \(LAVAZZA.statusWaterTank)"
+        statusCupsLable.text = "Cups: \(LAVAZZA.statusCups)"
+        statusTrashLable.text = "Trash: \(LAVAZZA.statusTrashTank)"
     }
     
-    
+    func updateBank() {
+        bankLable.text = "Your bank is: \(LAVAZZA.statusCash) dollars." }
 } // End ViewController
 
