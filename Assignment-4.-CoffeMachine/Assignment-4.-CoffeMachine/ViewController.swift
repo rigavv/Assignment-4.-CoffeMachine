@@ -134,6 +134,13 @@ class ViewController: UIViewController {
     }
     
     func updateBank() {
-        bankLable.text = "Your bank is: \(LAVAZZA.statusCash) dollars." }
+        bankLable.text = "Your bank is: \(LAVAZZA.statusCash) dollars."
+        countingHouse()
+    }
+    
+    func countingHouse() {
+        statusCashboxLable.text = "CashBox: \(LAVAZZA.statusCashBox) dollars."
+        statusCountsCupsLable.text = "Total Cups: \(LAVAZZA.statusCupCount) pcs."
+    }
 } // End ViewController
 

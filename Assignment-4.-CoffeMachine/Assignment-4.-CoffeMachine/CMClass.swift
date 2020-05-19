@@ -19,6 +19,8 @@ class CM {
     var statusIceCreamTank: Double = 0
     var statusTrashTank: Double = 0
     var statusCash: Double = 0
+     var statusCashBox: Double = 0
+     var statusCupCount: Double = 0
     
     init(name: String) {
         self.name = name
@@ -35,8 +37,10 @@ class CM {
         { statusGrainsTank -= Espresso().grainsDose
           statusWaterTank -= Espresso().waterDose
           statusTrashTank += Espresso().trashDose
-          statusCups -= Glace().cup
+          statusCups -= Espresso().cup
           statusCash -= Espresso().priсe
+          statusCashBox += Espresso().priсe
+          statusCupCount += Espresso().cup
         }
         return "Take your Espresso"
     }
@@ -57,6 +61,8 @@ class CM {
               statusIceCreamTank -= Glace().iceCreamDose
               statusCups -= Glace().cup
               statusCash -= Glace().priсe
+              statusCashBox += Glace().priсe
+              statusCupCount += Glace().cup
             }
             return "Take your Glace"
     }
@@ -71,11 +77,13 @@ class CM {
         else if statusCash < 1.1 { return "Not enough money." }
         else
         { statusGrainsTank -= Americano().grainsDose
-          statusWaterTank -= Americano().waterDose
-          statusTrashTank += Americano().trashDose
-          statusMilkTank -= Americano().milkDose
-          statusCups -= Americano().cup
-          statusCash -= Americano().priсe
+            statusWaterTank -= Americano().waterDose
+            statusTrashTank += Americano().trashDose
+            statusMilkTank -= Americano().milkDose
+            statusCups -= Americano().cup
+            statusCash -= Americano().priсe
+            statusCashBox += Americano().priсe
+            statusCupCount += Americano().cup
         }
         return "Take your Americano"
     }
