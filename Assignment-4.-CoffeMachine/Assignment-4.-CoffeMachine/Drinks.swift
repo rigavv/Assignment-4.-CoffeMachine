@@ -8,28 +8,62 @@
 
 import Foundation
 
-class Espresso {
-    let grainsDose: Double = 20
-    let waterDose: Double = 100
-    let trashDose: Double = 20
-    let priсe: Double = 0.5
-    let cup: Double = 1
+enum Drinks: String {
+    case espresso = "Espresso"
+    case glace = "Glace"
+    case americano = "Americano"
+    
+    var iceCreamDose: Double {
+        switch self {
+        case .americano: return 0
+        case .glace: return 10
+        case .espresso: return 0
+        }
+    }
+    
+    var grainsDose: Double {
+        switch self {
+        case .americano: return 50
+        case .glace: return 20
+        case .espresso: return 20
+        }
+    }
+    var waterDose: Double {
+        switch self {
+        case .americano: return 100
+        case .glace: return 100
+        case .espresso: return 50
+        }
+    }
+    var trashDose: Double {
+        switch self {
+        case .americano: return 25
+        case .glace: return 25
+        case .espresso: return 25
+        }
+    }
+    var milkDose:Double {
+        switch self {
+        case .americano: return 50
+        case .glace: return 0
+        case .espresso: return 0
+        }
+    }
+    var priсe: Double {
+        switch self {
+        case .americano: return 1.1
+        case .glace: return 1.5
+        case .espresso: return 0.5
+        }
+    }
+    var cup: Double {
+        switch self {
+        case .americano: return 1
+        case .glace: return 1
+        case .espresso: return 1
+        }
+    }
+    
+    
 }
 
-class Glace {
-    let iceCreamDose: Double = 10
-    let waterDose: Double = 100
-    let trashDose: Double = 20
-    let priсe: Double = 1.5
-    let grainsDose: Double = 20
-    let cup: Double = 1
-}
-
-class Americano {
-    let grainsDose: Double = 20
-    let waterDose: Double = 100
-    let trashDose: Double = 20
-    let milkDose: Double = 50
-    let priсe: Double = 1.1
-    let cup: Double = 1
-}

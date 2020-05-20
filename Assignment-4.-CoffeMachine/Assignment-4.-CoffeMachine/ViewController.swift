@@ -64,20 +64,21 @@ class ViewController: UIViewController {
     // - Coffee
     
     @IBAction func espressoButton(_ sender: Any) {
-        mainSatusLable.text = lavazza.makeEspresso()
+        mainSatusLable.text = lavazza.makeADrink(drink: .espresso)
+        
         statusTanks()
         updateBank()
         
     }
     
     @IBAction func glaceButton(_ sender: Any) {
-        mainSatusLable.text = lavazza.makeGlace()
+        mainSatusLable.text = lavazza.makeADrink(drink: .glace)
         statusTanks()
         updateBank()
     }
     
     @IBAction func americanoButton(_ sender: Any) {
-        mainSatusLable.text = lavazza.makeAmericano()
+        mainSatusLable.text = lavazza.makeADrink(drink: .americano)
         statusTanks()
         updateBank()
     }
