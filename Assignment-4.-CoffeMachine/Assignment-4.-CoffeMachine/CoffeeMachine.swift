@@ -9,7 +9,7 @@
 import Foundation
 
 
-class CM {
+class CoffeeMachine {
     var name: String
     
     var statusWaterTank: Double = 0
